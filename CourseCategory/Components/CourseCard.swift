@@ -1,0 +1,58 @@
+//
+//  CourseCard.swift
+//  CourseCategory
+//
+//  Created by $@€€© on 10/13/22.
+//
+
+import SwiftUI
+
+struct CourseCard: View {
+    private let imageUrl = "https://images.ctfassets.net/ooa29xqb8tix/5IXFM29JvbdXKuHeGF91Y3/6b49d65577c32747b7b1a60444c56d9c/SwiftUI_Combine_800x600_cover.png"
+    var body: some View {
+        VStack(spacing: 8){
+            AsyncImage(url: URL(string: imageUrl)){ image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(maxWidth: 128, alignment: .center)
+            } placeholder: {
+                Rectangle()
+                    .foregroundColor(.gray.opacity(0.2))
+            }
+            
+            Spacer()
+            
+            Text("SwiftUI for IOS 16")
+                .font(.headline)
+                .fontWeight(.bold)
+                .lineLimit(2)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .foregroundColor(.white)
+            
+            Text("20 sections - s hours")
+                .font(.caption)
+                .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.7)))
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+        }
+        .padding(16)
+        .frame(height: 217, alignment: .top)
+        .background(
+            LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .top, endPoint: .bottomLeading)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .overlay(RoundedRectangle(cornerRadius: 20, style: .continuous)
+            .stroke(Color.white.opacity(0.2), lineWidth: 0.5)
+            .blendMode(.overlay)
+        )
+        .shadow(color: .blue.opacity(0.3), radius: 15, x: 0, y: 10)
+        
+    }
+}
+
+struct CourseCard_Previews: PreviewProvider {
+    static var previews: some View {
+        CourseCard()
+    }
+}
