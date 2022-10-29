@@ -1,0 +1,28 @@
+query CourseCategory{
+  courseCategoryCollection{
+    courses: items{
+      sys{
+        publishedAt
+        id
+      }
+      title
+      subtitle
+      numberOfSections
+      subject
+      colors
+      illustration{
+        url
+      }
+      sectionCollection{
+        sections: items{
+          sys{
+            id
+          }
+          title
+          subtitle
+          content
+        }
+      }
+    }
+  }
+}
